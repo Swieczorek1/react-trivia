@@ -1,50 +1,27 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom'; // Import useHistory
+import { Link, useNavigate } from 'react-router-dom';
 import Question from './Questions';
 import './TriviaApp.css'; // Import the CSS file for styling
 
-const TriviaApp = () => {
+const TriviaApp = ({ score, setScore, questions }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null); // Initialize selectedAnswer state
-  const history = useHistory(); // Initialize useHistory
-
-  const questions = [
-    {
-      question: 'What is the capital of France?',
-      answers: ['Paris', 'Berlin', 'London', 'Madrid'],
-      correctAnswer: 'Paris',
-    },
-    {
-      question: 'What is the capital of Mexico?',
-      answers: ['Riviera Maya', 'Cabo', 'Mexico City', 'Cancun'],
-      correctAnswer: 'Mexico City',
-    },
-    {
-      question: 'What is the capital of Argentina?',
-      answers: ['Rio', 'El Bagno', 'Buenos Aires', 'Boca Raton'],
-      correctAnswer: 'Buenos Aires',
-    },
-    {
-      question: 'What is the capital of Canada?',
-      answers: ['Toronto', 'Ottawa', 'Montreal', 'Liverpool'],
-      correctAnswer: 'Ottawa',
-    },
-  ];
+  const navigate = useNavigate(); // Initialize useHistory
 
   const handleAnswerSubmit = (selectedAnswer) => {
     const currentQuestion = questions[currentQuestionIndex];
     if (selectedAnswer === currentQuestion.correctAnswer) {
-      setScore(score + 1);
+        setScore((prevScore) => prevScore + 1); // Increment score using the previous state
     }
   };
+
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       // Handle end of quiz, e.g., navigate to summary page
-      history.push('/summary'); // Navigate to the summary page
+      navigate.push('/summary'); // Navigate to the summary page
     }
   };
 
@@ -54,7 +31,17 @@ const TriviaApp = () => {
       setSelectedAnswer(null); // Reset selectedAnswer when moving to previous question
     }
   };
-
+  const handleStartOver = () => {
+    setScore(0); // Reset score to 0
+    setCurrentQuestionIndex(0);
+    setSelectedAnswer(null);
+  };
+  
+  const handleGoHome = () => {
+    setScore(0); // Reset score to 0
+    setCurrentQuestionIndex(0);
+    setSelectedAnswer(null);
+  };
   return (
     <div className="trivia-app">
       <h1>Trivia App</h1>
@@ -71,6 +58,7 @@ const TriviaApp = () => {
         <div>
           <h2>Game Over!</h2>
           <p>Your Score: {score}/{questions.length}</p>
+          <button onClick={handleStartOver}>Start Over</button>           
         </div>
       )}
       <div>
@@ -87,8 +75,13 @@ const TriviaApp = () => {
           </Link>
         )}
       </div>
+      <div>
+        <Link to="/" className="home-button" onClick={handleGoHome}>
+          Go Home
+        </Link>
+      </div>    
     </div>
   );
 };
 
-export default TriviaApp;
+export default TriviaApp

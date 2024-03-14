@@ -6,8 +6,7 @@ const SummaryPage = ({ score, totalQuestions }) => {
   return (
     <div>
       <h2>Game Over!</h2>
-      <p>Your Score: {score}/{totalQuestions} ({percentage}%)</p>
-      {/* Add any additional summary information or components here */}
+      <p>Your Score: {score}/{totalQuestions} ({percentage}%)</p>      
     </div>
   );
 };
