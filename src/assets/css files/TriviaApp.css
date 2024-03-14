@@ -1,0 +1,13 @@
+.trivia-app {
+  max-width: 400px; /* Adjust the max-width for better card layout */
+  margin: 0 auto; /* Center the content */
+  
+}
+
+.next-question-button {
+  margin-top: 16px; /* Add margin for spacing between the question and the button */
+  border: 1px solid #000000; /* Add border styles */
+  padding: 16px; /* Add padding for spacing */
+  margin-bottom: 16px; /* Add margin for separation between cards */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+}

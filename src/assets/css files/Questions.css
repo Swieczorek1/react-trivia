@@ -1,0 +1,30 @@
+
+.question-card {
+  border: 2px solid #000000; /* Add border styles */
+  padding: 16px; /* Add padding for spacing */
+  margin-bottom: 16px; /* Add margin for separation between cards */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+}
+
+.selected {
+  background-color: hwb(204 95% 4%); /* Add background color for selected answer */
+  border: 1px solid hsl(0, 0%, 0%); /* Add border styles */
+  padding: 16px; /* Add padding for spacing */
+  margin-bottom: 16px; /* Add margin for separation between cards */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+}
+  
+button {
+  border: 1px solid #10e244; /* Add border styles */
+  padding: 16px;
+  margin-bottom: 16px;
+  margin-right: 8px; /* Add margin to buttons for spacing */
+}
+
+
+button.submit-answer {
+  border: 2px solid #000000; /* Adjust the border width if needed */
+}
+
+
+
