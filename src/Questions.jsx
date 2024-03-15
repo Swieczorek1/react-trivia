@@ -3,21 +3,24 @@ import './Questions.css'; // Import the CSS file for styling
 
 const Question = ({ question, answers, correctAnswer, selectedAnswer, onSelectAnswer, onSubmit }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [userSelection, setUserSelection] = useState(null);
 
   useEffect(() => {
     setSubmitted(false); // Reset submitted state when new question props are received
-  }, [question]);
+    setUserSelection(selectedAnswer); // Update userSelection when selectedAnswer changes
+  }, [question, selectedAnswer]);
 
   const handleSelectAnswer = (answer) => {
     if (!submitted) {
-      onSelectAnswer(answer);
+      setUserSelection(answer); // Update userSelection when an answer is selected
+      onSelectAnswer(answer); // Update selectedAnswer for submission
     }
   };
 
   const handleSubmit = () => {
-    if (selectedAnswer !== null) {
+    if (userSelection !== null) {
       setSubmitted(true);
-      onSubmit(selectedAnswer);
+      onSubmit(userSelection);
     }
   };
 
@@ -30,21 +33,21 @@ const Question = ({ question, answers, correctAnswer, selectedAnswer, onSelectAn
             <button
               key={index}
               onClick={() => handleSelectAnswer(answer)}
-              className={selectedAnswer === answer ? 'selected' : ''}
-              disabled={submitted}
+              className={(userSelection === answer && !submitted) ? 'selected' : ''}
+              disabled={submitted || (selectedAnswer !== null && selectedAnswer !== answer)}
             >
               {answer}
             </button>
           ))}
         </div>
       </div>
-      <button onClick={handleSubmit} disabled={selectedAnswer === null || submitted}>
+      <button onClick={handleSubmit} disabled={userSelection === null || submitted}>
         Submit Answer
       </button>
       {submitted && (
         <div>
-          <p>You selected: {selectedAnswer}</p>
-          {selectedAnswer === correctAnswer ? (
+          <p>You selected: {userSelection}</p>
+          {userSelection === correctAnswer ? (
             <p>Correct!</p>
           ) : (
             <p>Incorrect. The correct answer is: {correctAnswer}</p>
@@ -56,3 +59,4 @@ const Question = ({ question, answers, correctAnswer, selectedAnswer, onSelectAn
 };
 
 export default Question;
+

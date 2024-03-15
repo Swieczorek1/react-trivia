@@ -5,43 +5,54 @@ import './TriviaApp.css'; // Import the CSS file for styling
 
 const TriviaApp = ({ score, setScore, questions }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null); // Initialize selectedAnswer state
-  const navigate = useNavigate(); // Initialize useHistory
+  const [selectedAnswers, setSelectedAnswers] = useState(Array(questions.length).fill(null));
+  const [answered, setAnswered] = useState(Array(questions.length).fill(false));
+  const navigate = useNavigate(); 
 
   const handleAnswerSubmit = (selectedAnswer) => {
+    const updatedSelectedAnswers = [...selectedAnswers];
+    updatedSelectedAnswers[currentQuestionIndex] = selectedAnswer;
+    setSelectedAnswers(updatedSelectedAnswers);
     const currentQuestion = questions[currentQuestionIndex];
-    if (selectedAnswer === currentQuestion.correctAnswer) {
-        setScore((prevScore) => prevScore + 1); // Increment score using the previous state
+    if (!answered[currentQuestionIndex]) {
+      if (selectedAnswer === currentQuestion.correctAnswer) {
+        setScore((prevScore) => prevScore + 1); 
+      }
+      const updatedAnswered = [...answered];
+      updatedAnswered[currentQuestionIndex] = true;
+      setAnswered(updatedAnswered); 
     }
   };
-
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Handle end of quiz, e.g., navigate to summary page
-      navigate.push('/summary'); // Navigate to the summary page
+      navigate('/summary'); 
     }
   };
 
   const handlePreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setSelectedAnswer(null); // Reset selectedAnswer when moving to previous question
     }
   };
+
   const handleStartOver = () => {
     setScore(0); // Reset score to 0
     setCurrentQuestionIndex(0);
-    setSelectedAnswer(null);
+    setSelectedAnswers(Array(questions.length).fill(null));
+    setAnswered(Array(questions.length).fill(false));
   };
   
   const handleGoHome = () => {
     setScore(0); // Reset score to 0
     setCurrentQuestionIndex(0);
-    setSelectedAnswer(null);
+    setSelectedAnswers(Array(questions.length).fill(null));
+    setAnswered(Array(questions.length).fill(false));
   };
+    
+    
   return (
     <div className="trivia-app">
       <h1>Trivia App</h1>
@@ -50,9 +61,10 @@ const TriviaApp = ({ score, setScore, questions }) => {
           question={questions[currentQuestionIndex].question}
           answers={questions[currentQuestionIndex].answers}
           correctAnswer={questions[currentQuestionIndex].correctAnswer}
-          selectedAnswer={selectedAnswer} // Pass selectedAnswer to Question component
-          onSelectAnswer={setSelectedAnswer} // Pass setSelectedAnswer to Question component
+          selectedAnswer={selectedAnswers[currentQuestionIndex]}
+          onSelectAnswer={handleAnswerSubmit}
           onSubmit={handleAnswerSubmit}
+          disabled={answered[currentQuestionIndex]}
         />
       ) : (
         <div>
@@ -84,4 +96,4 @@ const TriviaApp = ({ score, setScore, questions }) => {
   );
 };
 
-export default TriviaApp
+export default TriviaApp;

@@ -1,11 +1,25 @@
 
 .question-card {
+  
   border: 2px solid #000000; /* Add border styles */
   padding: 16px; /* Add padding for spacing */
   margin-bottom: 16px; /* Add margin for separation between cards */
   border-radius: 8px; /* Add border-radius for rounded corners */
+  text-align: center;
+  margin-left: 50px;
 }
-
+.home-card {
+  position: fixed;
+  top: 50%;
+  left: 30%;
+  transform: translate(-40%, -50%);
+  border: 2px solid #000000; /* Add border styles */
+  padding: 16px; /* Add padding for spacing */
+  margin-bottom: 16px; /* Add margin for separation between cards */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  text-align: center;
+  margin-left: 50px;
+}
 .selected {
   background-color: hwb(204 95% 4%); /* Add background color for selected answer */
   border: 1px solid hsl(0, 0%, 0%); /* Add border styles */
