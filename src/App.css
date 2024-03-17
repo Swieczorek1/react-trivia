@@ -13,9 +13,7 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
+
 
 
 .read-the-docs {
@@ -25,16 +23,16 @@
 
 
 Link {
-  text-decoration: none; /* Remove default link underline */
-  color: #fff; /* Set text color to white */
-  padding: 10px 20px; /* Add padding for button size */
-  margin: 0 10px; /* Add margin for spacing */
-  border: 2px solid #fff; /* Add border for button outline */
-  border-radius: 5px; /* Add border-radius for rounded corners */
-  background-color: #4caf50; /* Set background color */
-  transition: background-color 0.3s; /* Add transition for smooth hover effect */
+  text-decoration: none;
+  color: #fff; 
+  padding: 10px 20px; 
+  margin: 0 10px;
+  border: 2px solid #fff; 
+  border-radius: 5px; 
+  background-color: #4caf50; 
+  transition: background-color 0.3s; 
 }
 
 Link:hover {
-  background-color: hwb(171 24% 22%); /* Change background color on hover */
+  background-color: hwb(171 24% 22%); 
 }

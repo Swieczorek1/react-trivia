@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Question from './Questions';
-import './TriviaApp.css'; // Import the CSS file for styling
+import './TriviaApp.css'; 
 
 const TriviaApp = ({ score, setScore, questions }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -39,14 +39,14 @@ const TriviaApp = ({ score, setScore, questions }) => {
   };
 
   const handleStartOver = () => {
-    setScore(0); // Reset score to 0
+    setScore(0); 
     setCurrentQuestionIndex(0);
     setSelectedAnswers(Array(questions.length).fill(null));
     setAnswered(Array(questions.length).fill(false));
   };
   
   const handleGoHome = () => {
-    setScore(0); // Reset score to 0
+    setScore(0); 
     setCurrentQuestionIndex(0);
     setSelectedAnswers(Array(questions.length).fill(null));
     setAnswered(Array(questions.length).fill(false));

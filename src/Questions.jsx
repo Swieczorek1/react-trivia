@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import './Questions.css'; // Import the CSS file for styling
+import './Questions.css'; 
 
 const Question = ({ question, answers, correctAnswer, selectedAnswer, onSelectAnswer, onSubmit }) => {
   const [submitted, setSubmitted] = useState(false);
   const [userSelection, setUserSelection] = useState(null);
 
   useEffect(() => {
-    setSubmitted(false); // Reset submitted state when new question props are received
-    setUserSelection(selectedAnswer); // Update userSelection when selectedAnswer changes
+    setSubmitted(false); 
+    setUserSelection(selectedAnswer); 
   }, [question, selectedAnswer]);
 
   const handleSelectAnswer = (answer) => {
     if (!submitted) {
-      setUserSelection(answer); // Update userSelection when an answer is selected
-      onSelectAnswer(answer); // Update selectedAnswer for submission
+      setUserSelection(answer); 
+      onSelectAnswer(answer); 
     }
   };
 
