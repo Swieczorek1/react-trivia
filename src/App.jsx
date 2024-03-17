@@ -36,7 +36,7 @@ function App() {
     },
     {
       question: '6.) Which player has been awarded the highest number of Superbowl MVPs?',
-      answers: ['Terry Bradshaw', 'Tom Brady', 'Joe Montan', 'Patrick Mahomes'],
+      answers: ['Terry Bradshaw', 'Tom Brady', 'Joe Montana', 'Patrick Mahomes'],
       correctAnswer: 'Tom Brady',
     },
     {
