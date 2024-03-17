@@ -52,7 +52,7 @@ function App() {
     {
       question: '9.) What Is The Highest Score Ever (both teams combined) In An NFL Game?',
       answers: ['110', '113', '108', '90'],
-      correctAnswer: '113, Washington Redskins 72-41 New York Giants ',
+      correctAnswer: '113', 
     },
     {
       question: '10.) What city did the Baltimore ravens previously base out of (before relocation)?',
