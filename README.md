@@ -1,5 +1,6 @@
-My First React Project:
+My First React Project: NFL TRIVIA
   
-   <div>By Steven Wieczorek</div>
+By Steven Wieczorek
 
-   NFL TRIVIA
+   
+   
